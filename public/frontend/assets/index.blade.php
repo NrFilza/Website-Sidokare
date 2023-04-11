@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desa Sidokare</title>
     <!--Main CSS-->
-    <link rel="stylesheet" href="{{ asset(/'frontend/assetscss/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assetscss/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
