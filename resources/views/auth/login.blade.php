@@ -37,10 +37,7 @@
             required autocomplete="email" oninvalid="this.setCustomValidity('Harap lengkapi email anda')" 
             oninput="this.setCustomValidity('')"
             placeholder="Masukkan Email Anda" value="{{ old('email')}}"/>
-            @error('email')
-            <div class="invalid-feedback">
-              {{ 'Email atau password yang anda masukkan salah' }}
-            </div> @enderror
+            
           </div>
 
         <!-- Password -->
@@ -65,6 +62,10 @@
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
+            <div class="inp">  @error('email')
+                <div class="invalid-feedback">
+                  {{ 'Email atau password yang anda masukkan salah' }}
+                </div> @enderror</div>
 
             <x-primary-button class="ml-3">
                 {{ __('Masuk') }}
