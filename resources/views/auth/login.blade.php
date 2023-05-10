@@ -32,10 +32,16 @@
 
         <!-- Email Address -->
         <div class="inp">
-            <x-input-label for="password" :value="__('Email')" />
-            <input id="email" class="block mt-1 w-full"  placeholder="example@gmail.com" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" >
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
+            required autocomplete="email" oninvalid="this.setCustomValidity('Harap lengkapi email anda')" 
+            oninput="this.setCustomValidity('')"
+            placeholder="Masukkan Email Anda" value="{{ old('email')}}"/>
+            @error('email')
+            <div class="invalid-feedback">
+              {{ 'Email atau password yang anda masukkan salah' }}
+            </div> @enderror
+          </div>
 
         <!-- Password -->
         <div class="inp">
@@ -46,7 +52,7 @@
                             name="password"
                             required autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            {{-- <x-input-error :messages="$errors->get('password')" class="mt-2" /> --}}
         </div>
 
         <!-- Remember Me -->

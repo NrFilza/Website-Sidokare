@@ -8,6 +8,7 @@
         <title>Dashboard</title>
         <link rel="stylesheet" href="{{ asset('frontend/assets/css/styledashboard.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+        
     </head>
     <body>
          <!--- header  -->
@@ -71,6 +72,7 @@
                 </ul>
     
             </div>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
             <div class="main--content">
                 <div class="overview">
                     <div class="title">
@@ -118,7 +120,7 @@
                                                   </div>
                                                   <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <span><form action="/ppid/{{ $w->id }}" method="POST">
+                                                    <span><form action="/formpengajuan/{{ $w->id }}" method="POST">
                                                         @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-danger" value="delete">Hapus</button>

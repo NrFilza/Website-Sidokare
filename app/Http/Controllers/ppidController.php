@@ -28,18 +28,18 @@ class ppidController extends Controller
     }
     public function edit($id){
         $ppid = pengajuan_ppid::find($id);
-        return view('ppid.edit', compact(['ppid']));
+        return view('edit', compact(['ppid']));
     }
     public function update($id, Request $request)
     {
         $ppid = pengajuan_ppid::find($id);
         $ppid->update($request->except(['_token','submit']));
-        return redirect('/ppid');
+        return redirect('/formpengajuan');
     }
     public function destroy($id){
         $ppid = pengajuan_ppid::find($id);
         $ppid->delete();
-        return redirect('/ppid');
+        return redirect('/formpengajuan');
     }
     // public function exportPdf($id){
     //     $ppid = pengajuan_ppid::find($id);
