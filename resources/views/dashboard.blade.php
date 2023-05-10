@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout> --}}
 
     <!DOCTYPE html>
     <html lang="en">
@@ -64,7 +64,7 @@
                 </ul>
                 <ul class="sidebar--bottom-items">
                     <li>
-                        <a href="{{ url('') }}">
+                        <a href="/logout">
                             <span class="icon icon-5"><i class="ri-logout-box-r-line"></i></span>
                             <span class="sidebar--item">Logout</span>
                         </a>
@@ -145,4 +145,4 @@
          <script src="{{ asset('frontend/assets/js/dashboard.js') }}"></script>
     </body>
     </html>
-</x-app-layout>
+{{-- </x-app-layout> --}}
