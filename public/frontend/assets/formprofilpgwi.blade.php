@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Akun Karyawan</title>
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/styledashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset(/'frontend/assetscss/formulir.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assetscss/formulir.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>

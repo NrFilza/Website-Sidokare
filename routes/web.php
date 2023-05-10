@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ppidController;
 use Illuminate\Support\Facades\Password;
 
 
@@ -38,4 +39,14 @@ Route::post('/forgot-password', function (Request $request) {
 Route::get('/reset-password/{token}', function ($token) {
     return view('auth.reset-password', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
+Route::get('/formpengajuan', function ()
+{
+    return view('formpengajuan');
+});
+Route::get('/formpengajuan',[ppidController::class, 'index']);
+Route::get('/ppid/create',[ppidController::class, 'create']);
+Route::post('/ppid/store',[ppidController::class, 'store']);
+Route::get('/ppid/{id}/edit', [ppidController::class,'edit']);
+Route::put('/ppid/{id}', [ppidController::class,'update']);
+Route::delete('/ppid/{id}', [ppidController::class,'destroy']);
 // Route::get('/ppid'[ppidController::class]);

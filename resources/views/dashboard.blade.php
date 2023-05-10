@@ -37,19 +37,19 @@
             <div class="sidebar">
                 <ul class="sidebar--items">  
                     <li>
-                        <a href="{{ url('') }}" id="active--link">
+                        <a href="/ppid/create" id="active--link">
                             <span class="icon icon-1"><i class="ri-layout-grid-line"></i></span>
                             <span class="sidebar--item">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('') }}">
+                        <a href="/formpengajuan">
                             <span class="icon icon-2"><i class="ri-line-chart-line"></i></span>
                             <span class="sidebar--item">Pengajuan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('') }}">
+                        <a href="">
                             <span class="icon icon-3"><i class="ri-customer-service-line"></i></span>
                             <span class="sidebar--item" style="white-space: nowrap;">Upload Berita</span>
                         </a>
