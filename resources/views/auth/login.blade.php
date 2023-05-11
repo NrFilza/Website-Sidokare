@@ -63,7 +63,7 @@
             @endif
             <div class="inp">  @error('email')
                 <div class="invalid-feedback">
-                  {{ 'Email atau password yang anda masukkan salah' }}
+                  {{ 'EMAIL ATAU PASSWORD YANG ANDA MASUKAN SALAH!' }}
                 </div> @enderror</div>
 
             <x-primary-button class="ml-3">

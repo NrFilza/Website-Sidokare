@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/berita">
                             <span class="icon icon-3"><i class="ri-customer-service-line"></i></span>
                             <span class="sidebar--item" style="white-space: nowrap;">Upload Berita</span>
                         </a>
@@ -64,10 +64,14 @@
                 </ul>
                 <ul class="sidebar--bottom-items">
                     <li>
-                        <a href="/logout">
-                            <span class="icon icon-5"><i class="ri-logout-box-r-line"></i></span>
-                            <span class="sidebar--item">Logout</span>
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+        
+                            <x-responsive-nav-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
                     </li> 
                 </ul>
     

@@ -64,10 +64,14 @@
                 </ul>
                 <ul class="sidebar--bottom-items">
                     <li>
-                        <a href="{{ url('') }}">
-                            <span class="icon icon-5"><i class="ri-logout-box-r-line"></i></span>
-                            <span class="sidebar--item">Logout</span>
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+        
+                            <x-responsive-nav-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
                     </li> 
                 </ul>
     

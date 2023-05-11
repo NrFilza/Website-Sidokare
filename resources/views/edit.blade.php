@@ -75,8 +75,9 @@
         <div class="main--content">
             <div class="overview">
                 <div class="title">
-                   
+                    
                    <div class="container">
+                    <a href="/formpengajuan">< Kembali</a>
                     <header>Formulir Pengajuan Desa Sidokare</header>
             
                     <form action="/ppid/{{ $ppid->id }}" method="POST">
@@ -139,7 +140,7 @@
                                 </button>
                                 <button type="button" class="btn btn-success">Diterima</button>
                                 <button type="button" class="btn btn-danger">Ditolak</button>
-                                <a href="/export-pdf">export</a>
+                                
                             </div> 
                         </div>
             
