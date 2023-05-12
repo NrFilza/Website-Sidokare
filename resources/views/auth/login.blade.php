@@ -16,13 +16,15 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <body>
         <div class="contanier">
-    
+            
             <div class="text">
+                
                 <img src="{{ asset('frontend/assets/img/kisspng-nganjuk-regency-logo-sedudo-waterfall-5b3b9825ec1874.8963461115306322299671.png') }}" alt="">
             </div>
     
             <div class="box-login">
                 <div class="login">
+                    <a href="/">< Kembali</a>
                     <div class="header">
                         <h2>Selamat Datang Kembali</h2>
                         <p>Mari mulai aktivitasmu kembali, selamat bekerja!</p>

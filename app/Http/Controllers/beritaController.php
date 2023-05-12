@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Berita;
+use App\Models\berita;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
     public function index()
     {
-        $beritas = Berita::all();
+        $beritas = berita::all();
         return view('index', compact('beritas'));
     }
 
@@ -29,14 +29,14 @@ class BeritaController extends Controller
             'unggah_file_lain' => 'nullable',
         ]);
 
-        Berita::create($validatedData);
+        berita::create($validatedData);
 
         return redirect()->route('berita.index')->with('success', 'Berita created successfully.');
     }
 
     public function edit($id)
     {
-        $berita = Berita::findOrFail($id);
+        $berita = berita::findOrFail($id);
         return view('edit', compact('berita'));
     }
 
@@ -54,7 +54,7 @@ class BeritaController extends Controller
         $berita = Berita::findOrFail($id);
         $berita->update($validatedData);
 
-        return redirect()->route('berita')->with('success', 'Berita updated successfully.');
+        return redirect()->route('berita.index')->with('success', 'Berita updated successfully.');
     }
 
     public function destroy($id)

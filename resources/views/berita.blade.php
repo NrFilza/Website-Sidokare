@@ -75,55 +75,45 @@
     
             </div>
 
+            <div class="main--content">
+                <div class="overview">
+    <h1>Berita</h1>
 
-<div class="main--content">
-    <div class="overview">
-    <h1>Edit Berita</h1>
-
-    <form action="{{ route('berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-
-        <div class="form-group">
-            <label for="judul_berita">Judul Berita</label>
-            <input type="text" class="form-control" id="judul_berita" name="judul_berita" value="{{ $berita->judul_berita }}" required>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
+    @endif
 
-        <div class="form-group">
-            <label for="tanggal_publikasi">Tanggal Publikasi</label>
-            <input type="date" class="form-control" id="tanggal_publikasi" name="tanggal_publikasi" value="{{ $berita->tanggal_publikasi }}" required>
-        </div>
+    <a href="{{ route('berita.create') }}" class="btn btn-primary mb-3">Tambah Berita</a>
 
-        <div class="form-group">
-            <label for="id_kategori">Kategori</label>
-            <select class="form-control" id="id_kategori" name="id_kategori" required>
-                <option value="">Pilih Kategori</option>
-                @for ($i = 1; $i <= 7; $i++)
-                    @php
-                        $kategori = 'ktg_berita' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                    @endphp
-                    <option value="{{ $kategori }}">{{ $kategori }}</option>
-                @endfor
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="isi_berita">Isi Berita</label>
-            <textarea class="form-control" id="isi_berita" name="isi_berita" required>{{ $berita->isi_berita }}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="foto">Foto</label>
-            <input type="file" class="form-control-file" id="foto" name="foto">
-        </div>
-
-        <div class="form-group">
-            <label for="unggah_file_lain">Unggah File Lain</label>
-            <input type="file" class="form-control-file" id="unggah_file_lain" name="unggah_file_lain">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Judul</th>
+                <th>Tanggal Publikasi</th>
+                <th>Kategori</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($beritas as $berita)
+                <tr>
+                    <td>{{ $berita->judul_berita }}</td>
+                    <td>{{ $berita->tanggal_publikasi }}</td>
+                    <td>{{ $berita->id_kategori }}</td>
+                    <td>
+                        <a href="{{ route('berita.edit', $berita->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                        <form action="{{ route('berita.destroy', $berita->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
