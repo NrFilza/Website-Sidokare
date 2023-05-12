@@ -105,6 +105,7 @@
                                     <td>{{ $w->NIK }}</td>
                                     <td>{{ $w->nama_pelapor }}</td>
                                     <td>{{ $w->judul_laporan }}</td>
+                                    <td>{{ $w->status }}</td>
                                     <td>{{ $w->kategori_ppid }}</td>
                                     <td><span><a  class="ri-edit-line edit" href="/ppid/{{ $w->id }}/edit">Detail</a></span>
                                         <span><!-- Button trigger modal -->

@@ -36,11 +36,18 @@ class ppidController extends Controller
         $ppid->update($request->except(['_token','submit']));
         return redirect('/formpengajuan');
     }
-    public function destroy($id){
-        $ppid = pengajuan_ppid::find($id);
-        $ppid->delete();
-        return redirect('/formpengajuan');
+    public function destroy($id)
+    {
+        $berita = pengajuan_ppid::findOrFail($id);
+        $berita->delete();
+    
+        return redirect()->route('berita.index')->with('success', 'Berita deleted successfully.');
     }
+    // public function destroy($id){
+    //     $ppid = pengajuan_ppid::find($id);
+    //     $ppid->delete();
+    //     return redirect('/formpengajuan');
+    // }
     // public function exportPdf($id){
     //     $ppid = pengajuan_ppid::find($id);
     //     $pdf = Pdf::loadview('pdf.export-book', ['ppid'=>$ppid]);

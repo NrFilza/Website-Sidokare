@@ -79,74 +79,65 @@
                    <div class="container">
                     <a href="/formpengajuan">< Kembali</a>
                     <header>Formulir Pengajuan Desa Sidokare</header>
-            
-                    <form action="/ppid/{{ $ppid->id }}" method="POST">
-                      @method ('put')
-                      @csrf
-                        <div class="form first">
-                            <div class="details personal">
-                                <span class="title">Detail Informasi</span>
-
-            @csrf
-                                <div class="fields">
-                                    <div class="input-field">
-                                        <label>NIK</label>
-                                        <input type="text" placeholder="" value="{{ $ppid->NIK }}" required>
-                                    </div>
-            
-                                   
-            
-                                    <div class="input-field">
-                                        <label>Asal Pelapor</label>
-                                        <input type="text" value="{{ $ppid->Alamat }}">
-                                    </div>
-                                <div class="fields">
-                                    <div class="input-field">
-                                        <label>Kategori Pengajuan</label>
-                                        <input type="text" value="{{ $ppid->kategori_ppid }}">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>no Telfon</label>
-                                        <input type="text" value="{{ $ppid->no_telfon }}">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>nama Pengaju</label>
-                                        <input type="text" value="{{ $ppid->nama_pelapor }}">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>Judul Pengajuan</label>
-                                        <input type="text"value="{{ $ppid->judul_laporan }}">
-                                    </div>
-            
-                                    <div class="input-field">
-                                        <label>Isi Pengajuan</label>
-                                        <input type="text" value="{{ $ppid->isi_laporan }}">
-                                    </div>
-                                    <div class="input-field">
-                                        <label>File Tambahan Pengaju</label>
-                                        <input type="text" value="{{ $ppid->upload_file_pendukung }}" >
-                                    </div>
-            
-                                    <div class="input-field">
-                                        <label>Unggah File Pendukung</label>
-                                       
-                                        <input type="file" value="" class="upload-box" name="upload_file_pendukung">
-                                    </div>
-                                </div>
-            
-                                <button class="sumbit" name="submit" value="update">
-                                    <span class="btnText">Kirim</span>
-                                    <i class="uil uil-navigator"></i>
-                                </button>
-                                <button type="button" class="btn btn-success">Diterima</button>
-                                <button type="button" class="btn btn-danger">Ditolak</button>
-                                
-                            </div> 
+                    <form action="{{ route('ppid.update', $ppid->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                
+                        <div class="form-group">
+                            <label for="judul_berita">NIK</label>
+                            <input type="text" class="form-control" id="NIK" value="{{ $ppid->NIK }}" required>
                         </div>
-            
+                
+                        <div class="form-group">
+                            <label for="tanggal_publikasi">Nama</label>
+                            <input type="text" class="form-control" id="nama_pelapor" name="nama_pelapor" value="{{ $ppid->nama_pelapor }}" required>
+                        </div>
+                
                         
-                                    
-                               
+                
+                        <div class="form-group">
+                            <label for="isi_berita">No Telfon</label>
+                            <textarea class="form-control" id="no_telfon" name="no_telfon" required>{{ $ppid->no_telfon }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="isi_berita">Judul Laporan</label>
+                            <textarea class="form-control" id="judul_laporan" name="judul_laporan" required>{{ $ppid->judul_laporan }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="isi_berita">Isi Berita</label>
+                            <textarea class="form-control" id="isi_laporan" name="isi_laporan" required>{{ $ppid->isi_laporan }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="isi_berita">Alamat</label>
+                            <textarea class="form-control" id="alamat" name="alamat" required>{{ $ppid->alamat }}</textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="status">Kategori</label>
+                            <select class="form-control" id="status" name="status" required>
+                                <option value="diterima" @if ($ppid->status== "diterima")selected @endif>Diterima</option>
+                                <option value="ditolak"  @if ($ppid->status== "ditolak")selected @endif>Ditolak</option>
+                                <option value="diproses" @if ($ppid->status== "diproses")selected @endif>Diproses</option>
+                                <option value="selesai"  @if ($ppid->status== "selesai")selected @endif>selesai</option>
+                                
+                            </select>
+                        </div>
+                <div class="mb-2">
+                    <label for="photo">photo</label>
+                    <input type="file" name="upload_file_pendukung" id="upload_file_pendukung" class="form-control">
+                    {{-- <img src="" id="img-view" width="100px" class="mt-1"> --}}
+                </div>
+                        {{-- <div class="form-group">
+                            <label for="foto">Foto</label>
+                            <input type="file" class="form-control-file" id="foto" name="foto">
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="unggah_file_lain">Unggah File Lain</label>
+                            <input type="file" class="form-control-file" id="unggah_file_lain" name="unggah_file_lain">
+                        </div> --}}
+                
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             
@@ -156,6 +147,10 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
             <script src="{{ asset('frontend/assets/js/formulir.js') }}"></script>
             <script src="{{ asset('frontend/assets/js/dashboard.js') }}"></script>
+            @push('js')
+                <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+                <script src="{{ asset('assets/js/custom.js') }}"></script>
+            @endpush
        </body>
        </html>
  {{-- <!doctype html>
