@@ -53,7 +53,7 @@ Route::get('/ppid/create',[ppidController::class, 'create']);
 Route::post('/ppid/store',[ppidController::class, 'store']);
 Route::get('/ppid/{id}/edit', [ppidController::class,'edit']);
 Route::put('/ppid/{id}', [ppidController::class,'update'])->name('ppid.update');
-Route::delete('/ppid/{id}', [ppidController::class,'destroy']);
+Route::delete('/ppid/{id}', [ppidController::class,'destroy'])->name('ppid.destroy');
 // Route::get('/ppid'[ppidController::class]);
 
 Route::get('/berita', [beritaController::class, 'index']);

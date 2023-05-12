@@ -109,11 +109,11 @@
                         </div>
                         <div class="form-group">
                             <label for="isi_berita">Alamat</label>
-                            <textarea class="form-control" id="alamat" name="alamat" required>{{ $ppid->alamat }}</textarea>
+                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->Alamat }}" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="status">Kategori</label>
+                            <label for="status">Status</label>
                             <select class="form-control" id="status" name="status" required>
                                 <option value="diterima" @if ($ppid->status== "diterima")selected @endif>Diterima</option>
                                 <option value="ditolak"  @if ($ppid->status== "ditolak")selected @endif>Ditolak</option>

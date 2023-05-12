@@ -38,10 +38,10 @@ class ppidController extends Controller
     }
     public function destroy($id)
     {
-        $berita = pengajuan_ppid::findOrFail($id);
-        $berita->delete();
+        $ppid = pengajuan_ppid::findOrFail($id);
+        $ppid->delete();
     
-        return redirect()->route('berita.index')->with('success', 'Berita deleted successfully.');
+        return redirect()->route('formpengajuan.index')->with('success', 'Berita deleted successfully.');
     }
     // public function destroy($id){
     //     $ppid = pengajuan_ppid::find($id);

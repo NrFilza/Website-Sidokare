@@ -72,6 +72,7 @@
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-responsive-nav-link>
+                        </form>
                     </li> 
                 </ul>
     
@@ -97,6 +98,7 @@
                                     <th>NIK</th>
                                     <th>Nama Pelapor</th>
                                     <th>judul laporan</th>
+                                    <th>status</th>
                                     <th>Kategori ppid</th>
                                     <th>Tindak lanjut</th>
                                 </tr>
@@ -108,8 +110,13 @@
                                     <td>{{ $w->status }}</td>
                                     <td>{{ $w->kategori_ppid }}</td>
                                     <td><span><a  class="ri-edit-line edit" href="/ppid/{{ $w->id }}/edit">Detail</a></span>
-                                        <span><!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <span><form action="{{ route('ppid.destroy', $w->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">Hapus</button>
+                                        </form>
+                                            <!-- Button trigger modal -->
+                                            {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                               Hapus
                                             </button>
                                             
@@ -130,7 +137,8 @@
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-danger" value="delete">Hapus</button>
                                                 {{-- <input type="submit" value="delete"> --}}
-                                            </form></span></td>
+                                            {{-- </form>  --}}
+                                        </span></td>
                                                     </tr>
                                                     @endforeach
                                                   </div>
