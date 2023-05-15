@@ -85,31 +85,31 @@
                 
                         <div class="form-group">
                             <label for="judul_berita">NIK</label>
-                            <input type="text" class="form-control" id="NIK" value="{{ $ppid->NIK }}" required>
+                            <input type="text" class="form-control" id="NIK" value="{{ $ppid->NIK }}" disabled>
                         </div>
                 
                         <div class="form-group">
                             <label for="tanggal_publikasi">Nama</label>
-                            <input type="text" class="form-control" id="nama_pelapor" name="nama_pelapor" value="{{ $ppid->nama_pelapor }}" required>
+                            <input type="text" class="form-control" id="nama_pelapor" name="nama_pelapor" value="{{ $ppid->nama_pelapor }}" disabled>
                         </div>
                 
                         
                 
                         <div class="form-group">
                             <label for="isi_berita">No Telfon</label>
-                            <textarea class="form-control" id="no_telfon" name="no_telfon" required>{{ $ppid->no_telfon }}</textarea>
+                            <textarea class="form-control" id="no_telfon" name="no_telfon" disabled>{{ $ppid->no_telfon }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="isi_berita">Judul Laporan</label>
-                            <textarea class="form-control" id="judul_laporan" name="judul_laporan" required>{{ $ppid->judul_laporan }}</textarea>
+                            <textarea class="form-control" id="judul_laporan" name="judul_laporan" disabled>{{ $ppid->judul_laporan }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="isi_berita">Isi Berita</label>
-                            <textarea class="form-control" id="isi_laporan" name="isi_laporan" required>{{ $ppid->isi_laporan }}</textarea>
+                            <textarea class="form-control" id="isi_laporan" name="isi_laporan" disabled>{{ $ppid->isi_laporan }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="isi_berita">Alamat</label>
-                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->Alamat }}" required>
+                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->Alamat }}" disabled>
                         </div>
                         
                         <div class="form-group">
@@ -125,18 +125,9 @@
                 <div class="mb-2">
                     <label for="photo">photo</label>
                     <input type="file" name="upload_file_pendukung" id="upload_file_pendukung" class="form-control">
-                    {{-- <img src="" id="img-view" width="100px" class="mt-1"> --}}
+                    
                 </div>
-                        {{-- <div class="form-group">
-                            <label for="foto">Foto</label>
-                            <input type="file" class="form-control-file" id="foto" name="foto">
-                        </div>
-                
-                        <div class="form-group">
-                            <label for="unggah_file_lain">Unggah File Lain</label>
-                            <input type="file" class="form-control-file" id="unggah_file_lain" name="unggah_file_lain">
-                        </div> --}}
-                
+                <div class="mt-2"><img src="" id="img-view" width="100" class="mt-1"></div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
@@ -153,40 +144,4 @@
             @endpush
        </body>
        </html>
- {{-- <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  </head>
-  <body>
-   
-    <div class="container">
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">id akun</label>
-        <input type="text" class="form-control" >
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">isi laporan</label>
-        <input type="text" class="form-control"  >
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">asal pelapor</label>
-        <input type="text" class="form-control" >
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">kategori</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">file pendukung</label>
-        <input type="text" class="form-control">
-      </div>
-      <input type="submit" >
-    </div>
-</form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  </body>
-</html> --}}
+ 

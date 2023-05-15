@@ -19,13 +19,26 @@
             </div>
             <div class="search--notification--profile">
                 <div class="search">
-                    <input type="text" placeholder="Cari Pengajuan">
-                    <button> <i class="ri-search-2-line"></i></button>
+                    <form action="/formpengajuan/search" method="GET">
+                    <input type="search" name="search" placeholder="Cari Pengajuan">
+                </form>
                 </div>
+                
+                <div class="col-md-2">
+                    <form method="GET" action="/formpengajuan/filter">
+                    <label>Mulai Tanggal</label>
+                    <input type="date" name="mulai" class="form-control">
+                   </div>
+                   <div class="col-md-2">
+                    <label>Sampai Tanggal</label>
+                    <input type="date" name="selesai" class="form-control">
+                    
+                </div>
+                <div class="col-md-1 pt-4"><button type="submit">cari</button></div>
+            </form>
                 <div class="notification--profile">
-                    <div class="picon bell">
-                        <i class="ri-notification-2-line"></i>
-                    </div>
+                        
+                    
                     <div class="picon profile">
                         <img src="{{ asset('frontend/assets/img/1.png') }}" alt="">
                     </div>
@@ -82,14 +95,14 @@
                 <div class="overview">
                     <div class="title">
                        <h2 title="section--title">Tabel Pengajuan </h2>
-                       <select name="date" id="date" class="dropdown">
+                       {{-- <select name="date" id="date" class="dropdown">
                         <option value="today">Hari Ini</option>
                         <option value="lastmonth">Bulan lalu</option>
                         <option value="lastyaer">Tahun Ini</option>
-                       </select>
+                       </select> --}}
                     </div>
 
-                    <a href="/ppid/create">add</a>
+                    <a href="/formpengajuan/create">add</a>
                     <div class="table">
                         <table>
                             <thead>
