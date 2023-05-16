@@ -30,6 +30,10 @@ class ppidController extends Controller
         $ppid = pengajuan_ppid::find($id);
         return view('edit', compact(['ppid']));
     }
+    public function export($id){
+        $ppid = pengajuan_ppid::find($id);
+        return view('edit', compact(['ppid']));
+    }
     public function update($id, Request $request)
     {
         $ppid = pengajuan_ppid::find($id);
@@ -41,7 +45,7 @@ class ppidController extends Controller
         $ppid = pengajuan_ppid::find($id);
         $ppid->delete();
     
-        return redirect()->route('/formpengajuan')->with('success', 'Berita deleted successfully.');
+        return redirect()->route('formpengajuan.index')->with('success', 'Berita deleted successfully.');
     }
     public function search(Request $request){
         if($request->has('search')){
@@ -52,10 +56,10 @@ class ppidController extends Controller
         return view('formpengajuan',['ppid'=>$ppid]);
     }
     public function filter(Request $request){
-        $mulai= "mulai";
-        $selesai = "selesai";
-        $ppid = pengajuan_ppid::whereDate('created_at', '>=', $mulai)
-        ->whereDate('created_at','<=',$selesai)
+        $start_date= $request -> start_date;
+        $end_date = $request -> end_date;
+        $ppid = pengajuan_ppid::whereDate('created_at', '>=', $start_date)
+        ->whereDate('created_at','<=',$end_date)
         ->get();
         return view('formpengajuan', compact('ppid'));
     }

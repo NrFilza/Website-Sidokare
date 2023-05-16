@@ -84,40 +84,48 @@
                         @method('PUT')
                 
                         <div class="form-group">
-                            <label for="judul_berita">NIK</label>
-                            <input type="text" class="form-control" id="NIK" value="{{ $ppid->NIK }}" disabled>
+                            <label for="judul_berita">id_akun</label>
+                            <input type="text" class="form-control" id="NIK" value="{{ $ppid->id_akun }}" required>
                         </div>
                 
                         <div class="form-group">
                             <label for="tanggal_publikasi">Nama</label>
-                            <input type="text" class="form-control" id="nama_pelapor" name="nama_pelapor" value="{{ $ppid->nama_pelapor }}" disabled>
+                            <input type="text" class="form-control" id="nama_pelapor" name="nama_pelapor" value="{{ $ppid->nama_pelapor }}" required>
                         </div>
                 
                         
                 
                         <div class="form-group">
                             <label for="isi_berita">No Telfon</label>
-                            <textarea class="form-control" id="no_telfon" name="no_telfon" disabled>{{ $ppid->no_telfon }}</textarea>
+                            <textarea class="form-control" id="no_telfon" name="no_telfon" required>{{ $ppid->no_telfon }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="isi_berita">Judul Laporan</label>
-                            <textarea class="form-control" id="judul_laporan" name="judul_laporan" disabled>{{ $ppid->judul_laporan }}</textarea>
+                            <textarea class="form-control" id="judul_laporan" name="judul_laporan" required>{{ $ppid->judul_laporan }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="isi_berita">Isi Berita</label>
-                            <textarea class="form-control" id="isi_laporan" name="isi_laporan" disabled>{{ $ppid->isi_laporan }}</textarea>
+                            <textarea class="form-control" id="isi_laporan" name="isi_laporan" required>{{ $ppid->isi_laporan }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="isi_berita">Alamat</label>
-                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->Alamat }}" disabled>
+                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->Alamat }}" required>
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="isi_berita">RT</label>
+                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->RT }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="isi_berita">Rw</label>
+                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->RW }}" required>
+                        </div>
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select class="form-control" id="status" name="status" required>
                                 <option value="diterima" @if ($ppid->status== "diterima")selected @endif>Diterima</option>
-                                <option value="ditolak"  @if ($ppid->status== "ditolak")selected @endif>Ditolak</option>
                                 <option value="diproses" @if ($ppid->status== "diproses")selected @endif>Diproses</option>
+                                <option value="dikerjakan" @if ($ppid->status== "dikerjakan")selected @endif>Dikerjakan</option>
+                                <option value="ditolak"  @if ($ppid->status== "ditolak")selected @endif>Ditolak</option>
                                 <option value="selesai"  @if ($ppid->status== "selesai")selected @endif>selesai</option>
                                 
                             </select>
@@ -127,8 +135,9 @@
                     <input type="file" name="upload_file_pendukung" id="upload_file_pendukung" class="form-control">
                     
                 </div>
-                <div class="mt-2"><img src="" id="img-view" width="100" class="mt-1"></div>
+               
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="/ppid/{{ $ppid->id }}/export">export</a>
                     </form>
                 </div>
             

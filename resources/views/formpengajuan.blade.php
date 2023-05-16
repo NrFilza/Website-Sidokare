@@ -20,18 +20,18 @@
             <div class="search--notification--profile">
                 <div class="search">
                     <form action="/formpengajuan/search" method="GET">
-                    <input type="search" name="search" placeholder="Cari Pengajuan">
+                    <input type="search" name="search" placeholder="Cari Pengajuan" required>
                 </form>
                 </div>
                 
                 <div class="col-md-2">
                     <form method="GET" action="/formpengajuan/filter">
                     <label>Mulai Tanggal</label>
-                    <input type="date" name="mulai" class="form-control">
+                    <input type="date" name="start_date" class="form-control" required>
                    </div>
                    <div class="col-md-2">
                     <label>Sampai Tanggal</label>
-                    <input type="date" name="selesai" class="form-control">
+                    <input type="date" name="end_date" class="form-control" required>
                     
                 </div>
                 <div class="col-md-1 pt-4"><button type="submit">cari</button></div>
@@ -108,7 +108,7 @@
                             <thead>
                                     <tr>
                                     
-                                    <th>NIK</th>
+                                    <th>Id Akun</th>
                                     <th>Nama Pelapor</th>
                                     <th>judul laporan</th>
                                     <th>status</th>
@@ -117,7 +117,7 @@
                                 </tr>
                                 @foreach ($ppid as $w)
                                 <tr>
-                                    <td>{{ $w->NIK }}</td>
+                                    <td>{{ $w->id_akun }}</td>
                                     <td>{{ $w->nama_pelapor }}</td>
                                     <td>{{ $w->judul_laporan }}</td>
                                     <td>{{ $w->status }}</td>
