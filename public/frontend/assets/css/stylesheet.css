@@ -1,0 +1,17 @@
+.form-foto {
+  position: relative;
+  display: inline-block;
+}
+
+.form-foto img {
+  max-width: 500;
+  height: auto;
+}
+
+.form-foto .btn-secondary {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ppidController;
 use App\Http\Controllers\beritaController;
 use Illuminate\Support\Facades\Password;
+use App\Http\Controllers\AkunController;
 
 
 Route::get('/', function () {
@@ -56,10 +57,12 @@ Route::put('/ppid/{id}', [ppidController::class,'update'])->name('ppid.update');
 Route::delete('/ppid/{id}', [ppidController::class,'destroy']);
 // Route::get('/ppid'[ppidController::class]);
 
-Route::get('/berita', [beritaController::class, 'index']);
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 Route::get('/berita/create', [BeritaController::class, 'create'])->name('berita.create');
 Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
 Route::get('/berita/{berita}', [BeritaController::class, 'show'])->name('berita.show');
 Route::get('/berita/{berita}/edit', [BeritaController::class, 'edit'])->name('berita.edit');
 Route::put('/berita/{berita}', [BeritaController::class, 'update'])->name('berita.update');
 Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+
+Route::resource('users', AkunController::class);
