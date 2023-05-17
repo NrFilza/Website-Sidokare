@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\keberatan;
 use App\Models\pengajuan_ppid;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -13,15 +14,16 @@ class ppidController extends Controller
     public function index(){
         $ppid = pengajuan_ppid::all();
         return view('formpengajuan', compact(['ppid']));
+        // $count = pengajuan_ppid::join('keberatan_ppid', 'pengajuan_ppids.id', '=', 'keberatan_ppid.id_ppid')
+        //                       ->count();
+
+        // return response()->json(['count' => $count]);
     }
     public function create()
     {
         return view('formpengajuan.create');
     }
-    public function dashboard()
-    {
-        return view('ppid.dashboard');
-    }
+    
     public function store(Request $request){
         pengajuan_ppid::create($request->except(['_token','submit']));
         return redirect('/ppid');
@@ -30,12 +32,24 @@ class ppidController extends Controller
         $ppid = pengajuan_ppid::find($id);
         return view('edit', compact(['ppid']));
     }
+    public function revisi($id){
+        $ppid = keberatan::find($id);
+        return view('revisi', compact(['ppid']));
+    }
     public function export($id){
         $ppid = pengajuan_ppid::find($id);
-        return view('edit', compact(['ppid']));
+        return view('export-pdf', compact(['ppid']));
     }
     public function update($id, Request $request)
     {
+        // $this->validate($request,[
+        //     'dokumen'=>'mimes:doc,docx,pdf,xls,xlsx,pdf,ppt,pptx'
+        // ])
+        // $dokumen = $request->file('dokumen');
+        // $nama_dokumen='FT'.date('ymdhis').'.'.$request->file('dokumen')->
+        // getClientOriginalExtension();
+        // $dokumen->move('dokumen/',$nama_dokumen);
+
         $ppid = pengajuan_ppid::find($id);
         $ppid->update($request->except(['_token','submit']));
         return redirect('/formpengajuan');

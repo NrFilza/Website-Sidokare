@@ -79,71 +79,48 @@
                     
                    <div class="container">
                     <a href="/formpengajuan">< Kembali</a>
-                    <header>Formulir Pengajuan Desa Sidokare</header>
+                    <header>Keberatan Atas PPID</header>
                     <form action="{{ route('ppid.update', $ppid->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                 
-                        <div class="form-group">
-                            <label for="judul_berita">id_akun</label>
-                            <input type="number" class="form-control" id="NIK" value="{{ $ppid->id_akun }}" required>
-                        </div>
-                
-                        <div class="form-group">
-                            <label for="tanggal_publikasi">Nama</label>
-                            <input type="text" class="form-control" id="nama_pelapor" name="nama_pelapor" value="{{ $ppid->nama_pelapor }}" required>
-                        </div>
-                
-                        
-                
-                        <div class="form-group">
-                            <label for="isi_berita">No Telfon</label>
-                            <input type="number" class="form-control" id="no_telfon" name="no_telfon" value="{{ $ppid->no_telfon  }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="isi_berita">Judul Laporan</label>
-                            <textarea class="form-control" id="judul_laporan" name="judul_laporan" required>{{ $ppid->judul_laporan }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="isi_berita">Isi Berita</label>
-                            <textarea class="form-control" id="isi_laporan" name="isi_laporan" required>{{ $ppid->isi_laporan }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="isi_berita">Alamat</label>
-                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->Alamat }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="isi_berita">RT</label>
-                            <input type="number" class="form-control" id="RT" value="{{ $ppid->RT }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="isi_berita">Rw</label>
-                            <input type="number" class="form-control" id="RW" value="{{ $ppid->RW }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <select class="form-control" id="status" name="status" required>
-                                <option value="diterima" @if ($ppid->status== "diterima")selected @endif>Diterima</option>
-                                <option value="diproses" @if ($ppid->status== "diproses")selected @endif>Diproses</option>
-                                <option value="dikerjakan" @if ($ppid->status== "dikerjakan")selected @endif>Dikerjakan</option>
-                                <option value="ditolak"  @if ($ppid->status== "ditolak")selected @endif>Ditolak</option>
-                                <option value="selesai"  @if ($ppid->status== "selesai")selected @endif>selesai</option>
-                                <option value="Revisi1"  @if ($ppid->status== "Revisi1")selected @endif>Revisi1</option>
-                                
-                            </select>
-                        </div>
+                        <table>
+                           
+                            <tr>
+                                <td>Id Keberatan</td>
+                                <td width="541">: {{ $ppid->id_keberatan_ppid }}</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td width="541">: {{ $ppid->alamat }}</td>
+                            </tr>
+                            <tr>
+                                <td>Alasan</td>
+                                <td width="541">: {{ $ppid->alasan  }}</td>
+                            </tr>
+                            <tr>
+                                <td>Catatan Tambahan</td>
+                                <td width="541">: {{ $ppid->catatan_tambahan  }}</td>
+                            </tr>
+                            <tr>
+                                <td>Id PPID</td>
+                                <td width="541">: {{ $ppid->id  }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal</td>
+                                <td width="541">: {{ $ppid->created_at  }}</td>
+                            </tr>
+                            
+                        </table><br>
                 
                 <div class="form-foto">
                         @if ($ppid->upload_file_pendukung)
                             <img src="{{ asset('storage/berita/'.$ppid->upload_file_pendukung) }}" alt="{{ $ppid->upload_file_pendukung }}">
                         @endif
+                        <input type="file" id="upload_file_pendukung" name="upload_file_pendukung" style="display: none;">
                     <input type="text" name="upload_file_pendukung" id="upload_file_pendukung" disabled class="form-control mt-2" value="{{ $ppid->upload_file_pendukung }}">
                 </div>
-
-               <div class="form-group">
-                            <label for="isi_berita">Upload Hasil PPID</label>
-                            <input type="file" class="form-control" id="RW" value="{{ $ppid->doc_hasil_ppid }}" required>
-                        </div>
+               
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>

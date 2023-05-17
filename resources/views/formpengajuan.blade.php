@@ -95,11 +95,6 @@
                 <div class="overview">
                     <div class="title">
                        <h2 title="section--title">Tabel Pengajuan </h2>
-                       {{-- <select name="date" id="date" class="dropdown">
-                        <option value="today">Hari Ini</option>
-                        <option value="lastmonth">Bulan lalu</option>
-                        <option value="lastyaer">Tahun Ini</option>
-                       </select> --}}
                     </div>
 
                     <a href="/formpengajuan/create">add</a>
@@ -122,35 +117,16 @@
                                     <td>{{ $w->judul_laporan }}</td>
                                     <td>{{ $w->status }}</td>
                                     <td>{{ $w->kategori_ppid }}</td>
+                                    @if ($w->status== "Revisi1")
+                                        <td><span><a  href="/ppid/{{ $w->id }}/revisi">keberatan</a></span></td> @endif 
+                                  
                                     <td><span><a  class="ri-edit-line edit" href="/ppid/{{ $w->id }}/edit">Detail</a></span>
+                                    <td><span><a  class="ri-edit-line edit" href="/ppid/{{ $w->id }}/export"  target="_blank">Export</a></span>
                                         <span><form action="{{ route('ppid.destroy', $w->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">Hapus</button>
                                         </form>
-                                            <!-- Button trigger modal -->
-                                            {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                              Hapus
-                                            </button>
-                                            
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                              <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                  <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Apakah anda yakin ingin menghapus data ini?</h1>
-                                                  </div>
-                                                  <div class="modal-body">
-                                                    Dengan menghapus data  ini maka anda akan menghapus secara permanen!
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <span><form action="/formpengajuan/{{ $w->id }}" method="POST">
-                                                        @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-danger" value="delete">Hapus</button>
-                                                {{-- <input type="submit" value="delete"> --}}
-                                            {{-- </form>  --}}
                                         </span></td>
                                                     </tr>
                                                     @endforeach

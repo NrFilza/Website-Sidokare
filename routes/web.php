@@ -49,11 +49,12 @@ Route::get('/berita', function ()
     return view('berita');
 });
 Route::get('/formpengajuan',[ppidController::class, 'index'])->name('formpengajuan.index');
-Route::get('formpengajuan/create',[ppidController::class, 'create']);
+Route::get('formpengajuan/create',[ppidController::class, 'create'])->name('formpengajuan.create');
 Route::post('/ppid/store',[ppidController::class, 'store']);
 Route::get('/ppid/{id}/edit', [ppidController::class,'edit']);
+Route::get('/ppid/{id}/revisi', [ppidController::class,'revisi']);
 Route::put('/ppid/{id}', [ppidController::class,'update'])->name('ppid.update');
-Route::put('/ppid/{id}/export', [ppidController::class,'export'])->name('ppid.export');
+Route::get('/ppid/{id}/export', [ppidController::class,'export'])->name('ppid.export');
 Route::delete('/formpengajuan/{id}', [ppidController::class,'destroy'])->name('ppid.destroy');
 Route::get('/formpengajuan/search', [ppidController::class,'search']);
 Route::get('/formpengajuan/filter', [ppidController::class,'filter']);
