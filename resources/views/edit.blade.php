@@ -84,8 +84,8 @@
                         @method('PUT')
                 
                         <div class="form-group">
-                            <label for="judul_berita">NIK</label>
-                            <input type="text" class="form-control" id="NIK" value="{{ $ppid->NIK }}" required>
+                            <label for="judul_berita">id_akun</label>
+                            <input type="text" class="form-control" id="NIK" value="{{ $ppid->id_akun }}" required>
                         </div>
                 
                         <div class="form-group">
@@ -109,15 +109,23 @@
                         </div>
                         <div class="form-group">
                             <label for="isi_berita">Alamat</label>
-                            <textarea class="form-control" id="alamat" name="alamat" required>{{ $ppid->alamat }}</textarea>
+                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->Alamat }}" required>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="status">Kategori</label>
+                            <label for="isi_berita">RT</label>
+                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->RT }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="isi_berita">Rw</label>
+                            <input type="text" class="form-control" id="Alamat" value="{{ $ppid->RW }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
                             <select class="form-control" id="status" name="status" required>
                                 <option value="diterima" @if ($ppid->status== "diterima")selected @endif>Diterima</option>
-                                <option value="ditolak"  @if ($ppid->status== "ditolak")selected @endif>Ditolak</option>
                                 <option value="diproses" @if ($ppid->status== "diproses")selected @endif>Diproses</option>
+                                <option value="dikerjakan" @if ($ppid->status== "dikerjakan")selected @endif>Dikerjakan</option>
+                                <option value="ditolak"  @if ($ppid->status== "ditolak")selected @endif>Ditolak</option>
                                 <option value="selesai"  @if ($ppid->status== "selesai")selected @endif>selesai</option>
                                 
                             </select>
@@ -125,19 +133,11 @@
                 <div class="mb-2">
                     <label for="photo">photo</label>
                     <input type="file" name="upload_file_pendukung" id="upload_file_pendukung" class="form-control">
-                    {{-- <img src="" id="img-view" width="100px" class="mt-1"> --}}
+                    
                 </div>
-                        {{-- <div class="form-group">
-                            <label for="foto">Foto</label>
-                            <input type="file" class="form-control-file" id="foto" name="foto">
-                        </div>
-                
-                        <div class="form-group">
-                            <label for="unggah_file_lain">Unggah File Lain</label>
-                            <input type="file" class="form-control-file" id="unggah_file_lain" name="unggah_file_lain">
-                        </div> --}}
-                
+               
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="/ppid/{{ $ppid->id }}/export">export</a>
                     </form>
                 </div>
             
@@ -153,40 +153,4 @@
             @endpush
        </body>
        </html>
- {{-- <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  </head>
-  <body>
-   
-    <div class="container">
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">id akun</label>
-        <input type="text" class="form-control" >
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">isi laporan</label>
-        <input type="text" class="form-control"  >
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">asal pelapor</label>
-        <input type="text" class="form-control" >
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">kategori</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">file pendukung</label>
-        <input type="text" class="form-control">
-      </div>
-      <input type="submit" >
-    </div>
-</form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  </body>
-</html> --}}
+ 

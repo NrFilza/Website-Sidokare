@@ -16,7 +16,7 @@ class ppidController extends Controller
     }
     public function create()
     {
-        return view('ppid.create');
+        return view('formpengajuan.create');
     }
     public function dashboard()
     {
@@ -30,6 +30,10 @@ class ppidController extends Controller
         $ppid = pengajuan_ppid::find($id);
         return view('edit', compact(['ppid']));
     }
+    public function export($id){
+        $ppid = pengajuan_ppid::find($id);
+        return view('edit', compact(['ppid']));
+    }
     public function update($id, Request $request)
     {
         $ppid = pengajuan_ppid::find($id);
@@ -38,19 +42,31 @@ class ppidController extends Controller
     }
     public function destroy($id)
     {
-        $berita = pengajuan_ppid::findOrFail($id);
-        $berita->delete();
+        $ppid = pengajuan_ppid::find($id);
+        $ppid->delete();
     
-        return redirect()->route('berita.index')->with('success', 'Berita deleted successfully.');
+        return redirect()->route('formpengajuan.index')->with('success', 'Berita deleted successfully.');
     }
-    // public function destroy($id){
-    //     $ppid = pengajuan_ppid::find($id);
-    //     $ppid->delete();
-    //     return redirect('/formpengajuan');
-    // }
-    // public function exportPdf($id){
-    //     $ppid = pengajuan_ppid::find($id);
-    //     $pdf = Pdf::loadview('pdf.export-book', ['ppid'=>$ppid]);
-    //     return $pdf->download('pengajuan PPID SIDOKARE-'.Carbon::now()->timestamp);
-    // }
+    public function search(Request $request){
+        if($request->has('search')){
+            $ppid = pengajuan_ppid::where('nama_pelapor', 'LIKE', '%'.$request->search.'%')->get();
+        }else{
+            $ppid = pengajuan_ppid::all();
+        }
+        return view('formpengajuan',['ppid'=>$ppid]);
+    }
+    public function filter(Request $request){
+        $start_date= $request -> start_date;
+        $end_date = $request -> end_date;
+        $ppid = pengajuan_ppid::whereDate('created_at', '>=', $start_date)
+        ->whereDate('created_at','<=',$end_date)
+        ->get();
+        return view('formpengajuan', compact('ppid'));
+    }
+    public function downloadpdf(){
+        $ppid = pengajuan_ppid::all();
+        $pdf = PDF::loadView('formpengajuan',['ppid'=>$ppid]);
+        return $pdf->download('laporan_ppid.pdf');
+    }
 }
+

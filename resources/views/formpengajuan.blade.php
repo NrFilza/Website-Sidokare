@@ -19,13 +19,26 @@
             </div>
             <div class="search--notification--profile">
                 <div class="search">
-                    <input type="text" placeholder="Cari Pengajuan">
-                    <button> <i class="ri-search-2-line"></i></button>
+                    <form action="/formpengajuan/search" method="GET">
+                    <input type="search" name="search" placeholder="Cari Pengajuan" required>
+                </form>
                 </div>
+                
+                <div class="col-md-2">
+                    <form method="GET" action="/formpengajuan/filter">
+                    <label>Mulai Tanggal</label>
+                    <input type="date" name="start_date" class="form-control" required>
+                   </div>
+                   <div class="col-md-2">
+                    <label>Sampai Tanggal</label>
+                    <input type="date" name="end_date" class="form-control" required>
+                    
+                </div>
+                <div class="col-md-1 pt-4"><button type="submit">cari</button></div>
+            </form>
                 <div class="notification--profile">
-                    <div class="picon bell">
-                        <i class="ri-notification-2-line"></i>
-                    </div>
+                        
+                    
                     <div class="picon profile">
                         <img src="{{ asset('frontend/assets/img/1.png') }}" alt="">
                     </div>
@@ -72,6 +85,7 @@
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-responsive-nav-link>
+                        </form>
                     </li> 
                 </ul>
     
@@ -81,35 +95,41 @@
                 <div class="overview">
                     <div class="title">
                        <h2 title="section--title">Tabel Pengajuan </h2>
-                       <select name="date" id="date" class="dropdown">
+                       {{-- <select name="date" id="date" class="dropdown">
                         <option value="today">Hari Ini</option>
                         <option value="lastmonth">Bulan lalu</option>
                         <option value="lastyaer">Tahun Ini</option>
-                       </select>
+                       </select> --}}
                     </div>
 
-                    <a href="/ppid/create">add</a>
+                    <a href="/formpengajuan/create">add</a>
                     <div class="table">
                         <table>
                             <thead>
                                     <tr>
                                     
-                                    <th>NIK</th>
+                                    <th>Id Akun</th>
                                     <th>Nama Pelapor</th>
                                     <th>judul laporan</th>
+                                    <th>status</th>
                                     <th>Kategori ppid</th>
                                     <th>Tindak lanjut</th>
                                 </tr>
                                 @foreach ($ppid as $w)
                                 <tr>
-                                    <td>{{ $w->NIK }}</td>
+                                    <td>{{ $w->id_akun }}</td>
                                     <td>{{ $w->nama_pelapor }}</td>
                                     <td>{{ $w->judul_laporan }}</td>
                                     <td>{{ $w->status }}</td>
                                     <td>{{ $w->kategori_ppid }}</td>
                                     <td><span><a  class="ri-edit-line edit" href="/ppid/{{ $w->id }}/edit">Detail</a></span>
-                                        <span><!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <span><form action="{{ route('ppid.destroy', $w->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">Hapus</button>
+                                        </form>
+                                            <!-- Button trigger modal -->
+                                            {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                               Hapus
                                             </button>
                                             
@@ -130,7 +150,8 @@
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-danger" value="delete">Hapus</button>
                                                 {{-- <input type="submit" value="delete"> --}}
-                                            </form></span></td>
+                                            {{-- </form>  --}}
+                                        </span></td>
                                                     </tr>
                                                     @endforeach
                                                   </div>
