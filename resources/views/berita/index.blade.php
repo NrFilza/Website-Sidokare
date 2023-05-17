@@ -9,7 +9,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
       </head>
         <title>Pengajuan</title>
-        <link rel="stylesheet" href="{{ asset('css/styledashboard.css') }}">
+        <link rel="stylesheet" href="{{ asset('frontend/assets/css/styledashboard.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
     </head>
     <body>
@@ -80,16 +80,17 @@
     <h1>Berita</h1>
 
     @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
     @endif
-
+    
     <a href="{{ route('berita.create') }}" class="btn btn-primary mb-3">Tambah Berita</a>
-
+    
     <table class="table">
         <thead>
             <tr>
+                <th>No.</th>
                 <th>Judul</th>
                 <th>Tanggal Publikasi</th>
                 <th>Kategori</th>
@@ -97,27 +98,46 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($beritas as $berita)
-                <tr>
-                    <td>{{ $berita->judul_berita }}</td>
-                    <td>{{ $berita->tanggal_publikasi }}</td>
-                    <td>{{ $berita->id_kategori }}</td>
-                    <td>
-                        <a href="{{ route('berita.edit', $berita->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                        <form action="{{ route('berita.destroy', $berita->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
+            @foreach ($beritas as $index => $berita)
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $berita->judul_berita }}</td>
+                <td>{{ $berita->tanggal_publikasi }}</td>
+                <<td>
+                    @if ($berita->id_kategori === 'ktg_berita01')
+                        BUM Desa
+                    @elseif ($berita->id_kategori === 'ktg_berita02')
+                        PKK
+                    @elseif ($berita->id_kategori === 'ktg_berita03')
+                        Pemerintah Desa
+                    @elseif ($berita->id_kategori === 'ktg_berita04')
+                        Potensi Desa
+                    @elseif ($berita->id_kategori === 'ktg_berita05')
+                        Pembangunan Masyarakat
+                    @elseif ($berita->id_kategori === 'ktg_berita06')
+                        Pemberdayaan Masyarakat
+                    @elseif ($berita->id_kategori === 'ktg_berita07')
+                        Pembinaan Masyarakat
+                    @endif
+                </td>
+                
+                <td>
+                    <a href="{{ route('berita.edit', $berita->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <form action="{{ route('berita.destroy', $berita->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">Hapus</button>
+                    </form>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
-</div>
-</div>
+    </div>
+    </div>
+    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-<script src="{{ asset('js/formulir.js') }}"></script>
-<script src="{{ asset('js/dashboard.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/formulir.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/dashboard.js') }}"></script>
 </body>
 </html>
