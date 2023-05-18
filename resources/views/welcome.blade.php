@@ -340,8 +340,8 @@
                             <textarea name="isi" id="isi" placeholder="Masukkan Komentarmu" required></textarea>
                             </div>
 
-                            <div class="button">
-                            <button type="submit">Kirim Sekarang</button>
+                            <div>
+                            <button type="submit" class="button">Kirim Sekarang</button>
                             </div>
                     </form>
                   </div>
