@@ -184,7 +184,7 @@
                   <img src="{{ asset('frontend/assets/img/1.png') }}" alt="screenshot">
                 </div>
                 <div class="screenshot-item">
-                  <img src="{{ asset('frontend/assets/img/1.png') }}" alt="screenshot">
+                  <img src="{{ asset('frontend/assets/img/1-removebg-preview.png') }}" alt="screenshot">
                 </div>
                 <div class="screenshot-item">
                   <img src="{{ asset('frontend/assets/img/1.png') }}" alt="screenshot">

@@ -373,6 +373,7 @@ tr{
 }
 td,th{
     padding-block: 10px;
+    text-align: center;
 }
 .add{
     display: flex;

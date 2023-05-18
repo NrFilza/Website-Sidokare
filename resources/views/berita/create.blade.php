@@ -74,7 +74,7 @@
                 </ul>
     
             </div>
-
+<!-- Tab;e -->
             <div class="main--content">
                 <div class="overview">
                     <h1>Tambah Berita</h1>
