@@ -8,11 +8,14 @@ use App\Http\Controllers\beritaController;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\EmailController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/kirim-email', [EmailController::class , 'kirimEmail']);
 
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');;
 

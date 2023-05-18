@@ -29,6 +29,6 @@ class EmailController extends Controller
 
         Mail::to('diphaandimorgan@gmail.com')->send(new EmailNotification($email, $nama, $isi));
 
-        return view('index');
+        return view('welcome');
     }
 }
