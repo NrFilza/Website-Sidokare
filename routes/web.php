@@ -7,15 +7,14 @@ use App\Http\Controllers\ppidController;
 use App\Http\Controllers\beritaController;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\dashboardController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');;
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -68,4 +67,4 @@ Route::get('/berita/{berita}/edit', [BeritaController::class, 'edit'])->name('be
 Route::put('/berita/{berita}', [BeritaController::class, 'update'])->name('berita.update');
 Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
-Route::resource('users', AkunController::class);
+Route::resource('users', AkunController::class); 
