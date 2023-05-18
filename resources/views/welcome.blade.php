@@ -329,19 +329,23 @@
                     <div class="right-side">
                       <div class="topic-text">Kirim Pesan</div>
                       <p>Anda dapat mengirimi saya pesan dari sini. Ini kesenangan saya untuk membantu Anda.</p>
-                    <form action="#">
-                      <div class="input-box">
-                        <input type="text" placeholder="Masukkan Namamu">
-                      </div>
-                      <div class="input-box">
-                        <input type="text" placeholder="Masukkan Emailmu">
-                      </div>
-                      <div class="input-box message-box">
-                        <input type="text" placeholder="Masukkan Komentarmu">
-                      </div>
-                      <div class="button">
-                        <input type="button" value="Kirim Sekarang" >
-                      </div>
+                      <form method="POST" action="/kirim-email">
+                            @csrf
+                            <div class="input-box">
+                            <input type="email" name="email" id="email" placeholder="Masukkan Email" required>
+                            </div>
+
+                            <div class="input-box">
+                            <input type="text" name="nama" id="nama" placeholder="Masukkan Namamu" required>
+                            </div>
+
+                            <div class="input-box message-box">
+                            <textarea name="isi" id="isi" placeholder="Masukkan Komentarmu" required></textarea>
+                            </div>
+
+                            <div class="button">
+                            <button type="submit">Kirim Sekarang</button>
+                            </div>
                     </form>
                   </div>
                 </div>

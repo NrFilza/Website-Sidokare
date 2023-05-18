@@ -7,8 +7,10 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/styledashboard.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
      <!--- header  -->
      <section class="header">
         <div class="logo">
@@ -62,7 +64,7 @@
             </ul>
             <ul class="sidebar--bottom-items">
                 <li>
-                    <a href="{{ url("") }}">
+                    <a href="{{ url('') }}">
                         <span class="icon icon-5"><i class="ri-logout-box-r-line"></i></span>
                         <span class="sidebar--item">Logout</span>
                     </a>
@@ -73,7 +75,7 @@
         <div class="main--content">
             <div class="overview">
                 <div class="title">
-                   <h2 title="section--title">overview</h2>
+                   <h2 title="section--title">Overview</h2>
                    <select name="date" id="date" class="dropdown">
                     <option value="today">Hari Ini</option>
                     <option value="lastmonth">Bulan lalu</option>
@@ -85,7 +87,7 @@
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Pengajuan PPID</h5>
-                            <h1>155</h1>
+                            <h1>{{ $total_ppid }}</h1>
                         </div>
                         <i class="ri-bar-chart-fill card--icon--lg"></i>
                     </div>
@@ -97,7 +99,7 @@
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Pengajuan Aspirasi</h5>
-                            <h1>155</h1>
+                            <h1>{{ $total_aspirasi }}</h1>
                         </div>
                         <i class="ri-bar-chart-fill card--icon--lg"></i>
                     </div>
@@ -108,7 +110,7 @@
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Pengajuan Keluhan</h5>
-                            <h1>155</h1>
+                            <h1>{{ $total_keluhan }}</h1>
                         </div>
                         <i class="ri-bar-chart-fill card--icon--lg"></i>
                     </div>
@@ -119,7 +121,7 @@
                     <div class="card--data">
                         <div class="card--content">
                             <h5 class="card--title">Pengguna</h5>
-                            <h1>155</h1>
+                            <h1>{{ $total_akun }}</h1>
                         </div>
                         <i class="ri-bar-chart-fill card--icon--lg"></i>
                     </div>
@@ -132,8 +134,40 @@
             <div class="charts">
 
                 <div class="charts-card">
-                  <p class="chart-title">Top 5 Products</p>
-                  <div id="bar-chart"></div>
+                  <p class="chart-title">Grafik Keluhan</p>
+                  <canvas id="myChart"></canvas>
+                    <script>
+                        var data = <?php echo json_encode($data); ?>;
+                        var labels = data.map(function(item) {
+                            return item.bulan;
+                        });
+                        var values = data.map(function(item) {
+                            return item.amount;
+                        });
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Grafik',
+                                    data: values,
+                                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                    borderColor: 'rgba(255, 99, 132, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
                 </div>
         </div>
      
