@@ -43,7 +43,6 @@
                             <input type="checkbox">
                             <span>Ingatkan saya?</span>
                         </div>
-                        <a href="{{ url('#') }}" class="forg">Lupa Password?</a>
                     </div>
 
                     <button>Masuk</button>

@@ -50,13 +50,13 @@
             <div class="sidebar">
                 <ul class="sidebar--items">  
                     <li>
-                        <a href="/dashboard" id="active--link">
+                        <a href="/dashboard">
                             <span class="icon icon-1"><i class="ri-line-chart-line"></i></span>
                             <span class="sidebar--item">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/formpengajuan">
+                        <a href="/formpengajuan" id="active--link">
                             <span class="icon icon-2"><i class="ri-layout-grid-line"></i></span>
                             <span class="sidebar--item">Pengajuan</span>
                         </a>
@@ -97,7 +97,7 @@
                        <h2 title="section--title">Tabel Pengajuan </h2>
                     </div>
 
-                    <a href="/formpengajuan/create">add</a>
+                    {{-- <a href="/formpengajuan/create">add</a> --}}
                     <div class="table">
                         <table>
                             <thead>
@@ -118,7 +118,7 @@
                                     <td>{{ $w->status }}</td>
                                     <td>{{ $w->kategori_ppid }}</td>
                                     @if ($w->status== "Revisi1")
-                                        <td><span><a  href="/ppid/{{ $w->id }}/revisi">keberatan</a></span></td> @endif 
+                                        <td><span><a class="rejected" href="/ppid/{{ $w->id }}/revisi">keberatan</a></span></td> @endif 
                                   
                                     <td><span><a  class="ri-edit-line edit" href="/ppid/{{ $w->id }}/edit">Detail</a></span>
                                     <td><span><a  class="ri-edit-line edit" href="/ppid/{{ $w->id }}/export"  target="_blank">Export</a></span>

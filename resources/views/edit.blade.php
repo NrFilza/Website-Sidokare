@@ -133,16 +133,21 @@
                             </select>
                         </div>
                 
-                <div class="form-foto">
-                        @if ($ppid->upload_file_pendukung)
-                            <img src="{{ asset('storage/berita/'.$ppid->upload_file_pendukung) }}" alt="{{ $ppid->upload_file_pendukung }}">
-                        @endif
-                    <input type="text" name="upload_file_pendukung" id="upload_file_pendukung" disabled class="form-control mt-2" value="{{ $ppid->upload_file_pendukung }}">
-                </div>
+                        <div class="form-outline mb-4">
+                            <label for="foto" class="form-label">Foto</label>
+                            <div class="form-foto">
+                                @if ($ppid && $ppid->upload_file_pendukung)
+                                    <img src="{{ asset('ppid/'.$ppid->upload_file_pendukung) }}" alt="{{ $ppid->upload_file_pendukung }}">
+                                @endif
+                                <input type="file" id="upload_file_pendukung" name="upload_file_pendukung" style="display: none;">
+                            </div>
+                        
+                            <input type="text" name="upload_file_pendukung" id="upload_file_pendukung" disabled class="form-control mt-2" value="{{ $ppid->upload_file_pendukung }}">
+                        </div>
 
                <div class="form-group">
                             <label for="isi_berita">Upload Hasil PPID</label>
-                            <input type="file" class="form-control" id="RW" value="{{ $ppid->doc_hasil_ppid }}" required>
+                            <input type="file" class="form-control" id="RW" value="{{ $ppid->doc_hasil_ppid }}" >
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>

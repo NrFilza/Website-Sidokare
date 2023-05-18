@@ -52,7 +52,7 @@ class ppidController extends Controller
 
         $ppid = pengajuan_ppid::find($id);
         $ppid->update($request->except(['_token','submit']));
-        return redirect('/formpengajuan');
+        return redirect('/formpengajuan')->with('success', 'Berita updated successfully.');
     }
     public function destroy($id)
     {

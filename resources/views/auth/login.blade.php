@@ -38,7 +38,7 @@
             <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
             required autocomplete="email" oninvalid="this.setCustomValidity('Harap lengkapi email anda')" 
             oninput="this.setCustomValidity('')"
-            placeholder="Masukkan Email Anda" value="{{ old('email')}}"/>
+            placeholder="example@gmail.com" value="{{ old('email')}}"/>
             
           </div>
 
@@ -59,9 +59,9 @@
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                {{-- <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
-                </a>
+                </a> --}}
             @endif
             <div class="inp">  @error('email')
                 <div class="invalid-feedback">
